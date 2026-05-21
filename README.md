@@ -7,5 +7,5 @@ Script đơn giản để cài đặt Cloudflare WARP trên Fedora
 Mở terminal và chạy:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mthuan6071/cfwarp-fedora/refs/heads/main/install.sh | sudo bash -E
+curl -fsSL https://raw.githubusercontent.com/mthuan6071/cfwarp-fedora/refs/heads/main/install.sh | sudo bash
 ```
