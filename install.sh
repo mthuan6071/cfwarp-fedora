@@ -53,7 +53,7 @@ warp-cli mode warp+doh
 info "Đang đặt tunnel protocol..."
 warp-cli tunnel protocol set MASQUE
 
-if [[ "${XDG_CURRENT_DESKTOP:-}" == *GNOME* ]]; then
+if pgrep -x gnome-shell >/dev/null 2>&1; then
 	warn "Bạn đang dùng GNOME, hãy cài (nếu chưa cài) extension AppIndicator and KStatusNotifierItem Support để hiện WARP trên system tray: https://extensions.gnome.org/extension/615/appindicator-support/"
 fi
 
