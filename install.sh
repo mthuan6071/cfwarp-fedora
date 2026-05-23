@@ -38,6 +38,14 @@ warn() {
 WARP_URL="https://downloads.cloudflareclient.com/v1/download/fedora35-intel/version/2026.1.150.0"
 RPM_FILE="warp.rpm"
 
+cleanup() {
+	if [[ $? -ne 0 ]]; then
+		rm -f "$RPM_FILE"
+	fi
+}
+
+trap cleanup EXIT
+
 info "Đang tải gói cài đặt Cloudflare WARP..."
 wget -O "$RPM_FILE" "$WARP_URL"
 
@@ -56,5 +64,8 @@ warp-cli tunnel protocol set MASQUE
 if pgrep -x gnome-shell >/dev/null 2>&1; then
 	warn "Bạn đang dùng GNOME, hãy cài (nếu chưa cài) extension AppIndicator and KStatusNotifierItem Support để hiện WARP trên system tray: https://extensions.gnome.org/extension/615/appindicator-support/"
 fi
+
+info "Đang xóa file cài đặt tạm thời..."
+rm -f "$RPM_FILE"
 
 success "Đã hoàn tất cài đặt và cấu hình Cloudflare WARP."
